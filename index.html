@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151521">
+  <meta name="description" content="La Oca Party: el joc de l'oca per jugar amb els amics.">
+
+  <title>La Oca Party</title>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="JocOca.css">
+
+  <script src="JocOca_caselles.js" defer></script>
+  <script src="JocOca_colors.js" defer></script>
+  <script src="JocOca_setup.js" defer></script>
+  <script src="JocOca.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section id="setupScreen">
+      <header class="app-header">
+        <div class="brand-icon" aria-hidden="true">🪿</div>
+        <p class="eyebrow">EL JOC DE SEMPRE, COM MAI</p>
+        <h1>La Oca <span>Party</span></h1>
+        <p class="subtitle">
+          Tira el dau, avança i prepara't per a qualsevol repte.
+        </p>
+      </header>
+
+      <section class="setup-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ABANS DE COMENÇAR</p>
+            <h2>Qui juga avui?</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">👥</span>
+        </div>
+
+        <div class="player-count-control">
+          <span>Nombre de jugadors</span>
+
+          <div class="counter">
+            <button
+              id="minusPlayers"
+              type="button"
+              aria-label="Treure un jugador"
+            >−</button>
+
+            <output id="playerCount" for="numPlayers">2</output>
+
+            <button
+              id="plusPlayers"
+              type="button"
+              aria-label="Afegir un jugador"
+            >+</button>
+          </div>
+
+          <input
+            id="numPlayers"
+            type="range"
+            min="2"
+            max="8"
+            value="2"
+            aria-label="Nombre de jugadors"
+          >
+          <div class="range-labels">
+            <span>2 jugadors</span>
+            <span>8 jugadors</span>
+          </div>
+        </div>
+
+        <div class="players-list-heading">
+          <h3>Noms i colors</h3>
+          <span>2–8 jugadors</span>
+        </div>
+
+        <div id="playersList"></div>
+
+        <p id="setupError" class="error-message" role="alert" hidden></p>
+
+        <button id="startBtn" class="primary-button" type="button">
+          Començar la partida <span aria-hidden="true">→</span>
+        </button>
+
+        <p class="setup-note">
+          💡 Poseu-vos d'acord amb les normes abans de començar!
+        </p>
+      </section>
+    </section>
+
+    <section id="gameScreen" hidden>
+      <header class="game-header">
+        <div>
+          <p class="eyebrow">LA PARTIDA ESTÀ EN MARXA</p>
+          <h1>La Oca <span>Party</span></h1>
+        </div>
+
+        <button id="resetBtn" class="secondary-button" type="button">
+          ↻ Reiniciar
+        </button>
+      </header>
+
+      <section class="turn-card">
+        <div class="turn-player">
+          <div id="turnAvatar" class="turn-avatar">J</div>
+
+          <div>
+            <p class="eyebrow">TORN DE</p>
+            <h2 id="turnName">Jugador</h2>
+            <p id="turnPosition">Casella 0</p>
+          </div>
+        </div>
+
+        <div class="dice-card">
+          <span class="dice-label">DAU</span>
+          <div id="diceResult" class="dice-result">—</div>
+        </div>
+      </section>
+
+      <section class="board-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EL TAULER</p>
+            <h2>Cap a la meta!</h2>
+          </div>
+          <span class="board-legend">38 caselles</span>
+        </div>
+
+        <div id="board" class="board"></div>
+      </section>
+
+      <section class="message-card" aria-live="polite">
+        <div id="messageIcon" class="message-icon">✨</div>
+
+        <div class="message-content">
+          <h2 id="messageTitle">Tot a punt!</h2>
+          <p id="messageText">Tira el dau per començar la partida.</p>
+        </div>
+      </section>
+
+      <button id="rollBtn" class="primary-button roll-button" type="button">
+        🎲 Tirar el dau
+      </button>
+
+      <section class="score-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">COM VA LA PARTIDA?</p>
+            <h2>Posicions</h2>
+          </div>
+          <span id="playersSummary" class="board-legend">2 jugadors</span>
+        </div>
+
+        <div id="scoreboard" class="scoreboard"></div>
+      </section>
+
+      <button id="backBtn" class="secondary-button back-button" type="button">
+        ← Tornar a la configuració
+      </button>
+    </section>
+
+    <footer class="app-footer">
+      <p>La Oca Party · Fet per jugar en bona companyia 🪿</p>
+    </footer>
+  </main>
+</body>
+</html>
