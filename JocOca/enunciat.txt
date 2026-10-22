@@ -1,0 +1,194 @@
+crea un joc de taula (una web) que sigui similar al joc de la oca (tires 1 dau i abances caselles), les caselles son:
+0/inici- on comencen tots els jugadors
+1- xupito
+2- el mas alto
+3- edad par
+4- cada uno de los jugadores tira el dado, si te sale par bebes
+5- todos beben
+6- casados beben
+7- el ultimo que ha fumado bebe
+8- fantasia +18
+9- ciegos beben
+10-quien es más probable que...?
+11-verdad o reto
+12-beben los virgo
+13-solteros beben
+14-di 2 mentiras i 1 verdad (los otros jugadores tienen que adivinar cual es la verdadera, si no beben)
+15-el más viejo
+16-machos beben
+17-verdad o reto
+18-todos beben un trago
+19-foto grupal
+20-hembras beben
+21-yo nunca nunca
+22-xupito al jugador que caiga
+23-Casar, Follar, Matar
+24-yo nunca nunca
+25-el ultimo que haya practicado sexo
+26-los que tengan "A" en su nombre
+27-el más callado bebe
+28-el que se haya besado con más
+29-el más listo bebe
+30-todos beben
+31-el jugador de tu izquierda bebe
+32-retrocede 3 casillas
+33-el más bebé bebe
+34-pregunta incòmoda
+35-tomate un trago
+36-todos beben
+37-yo nunca nunca
+38-fin del juego
+
+Utilitza html,css,php,js per poder fer aquest joc.
+Fes que al inici et demani el numero de jugadors, el nom de cada un i un color per identificar millor cada jugador (el color s'ha d'escullir, posa 30 colors per triar).
+Fes que es veguin les fitxes (en cas de que sigui molt complicat fes una llegenda on digui en quina casella esta cada jugador), fes que no hi hagi limit de jugadors.
+
+/* 5. JocOca.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #222;
+  color: #eee;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.container { max-width: 900px; margin: auto; }
+
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.btn:hover { opacity: 0.8; }
+.btn.secondary { background: #555; }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* .cell {
+  background: #333;
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  min-height: 80px;
+  position: relative;
+} */
+
+.tokens {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.token {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1px;
+}
+
+.legend {
+  text-align: left;
+  margin-top: 20px;
+  background: #333;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 2px;
+  border: 1px solid #555;
+}
+
+/* .message-box {
+  background: #444;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  min-height: 24px;
+  opacity: 1;
+  transition: opacity 0.3s;
+} */
+.message-box {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffd54f;
+  color: #111;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+
+.message-box.visible {
+  opacity: 1;
+}
+
+.board-spiral {
+  display: flex;
+  flex-direction: column-reverse; /* per començar pel 0 a baix */
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.board-spiral .row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cell {
+  background: #333;
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  min-width: 90px;
+  min-height: 80px;
+  position: relative;
+}
